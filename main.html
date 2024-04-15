@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monty Python Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Monty Python Game</h1>
+        <p>Guess a number between 0 and 9:</p>
+        <input type="text" id="guessInput">
+        <button onclick="checkGuess()">Submit</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function good() {
+            document.getElementById('result').textContent = "You WIN";
+        }
+        
+        function checkGuess() {
+            const num = Math.floor(Math.random() * 10); // Generate a random number between 0 and 9
+            const guess = parseInt(document.getElementById('guessInput').value);
+        
+            if (isNaN(guess) || guess < 0 || guess > 9) {
+                document.getElementById('result').textContent = "Please enter a valid number between 0 and 9.";
+                return;
+            }
+        
+            if (guess === num) {
+                good();
+            } else if (guess < num) {
+                document.getElementById('result').textContent = "Try again! The number is higher.";
+            } else {
+                document.getElementById('result').textContent = "Try again! The number is lower.";
+            }
+        }
+    </script>
+</body>
+</html>
